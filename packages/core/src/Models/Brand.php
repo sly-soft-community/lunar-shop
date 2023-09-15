@@ -12,6 +12,8 @@ use Lunar\Base\Traits\LogsActivity;
 use Lunar\Base\Traits\Searchable;
 use Lunar\Database\Factories\BrandFactory;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @property int $id
@@ -26,7 +28,8 @@ class Brand extends BaseModel implements SpatieHasMedia
         HasUrls,
         Searchable,
         LogsActivity,
-        HasMacros;
+        HasMacros,
+        HasSlug;
 
     /**
      * Define our base filterable attributes.
@@ -57,12 +60,19 @@ class Brand extends BaseModel implements SpatieHasMedia
         return BrandFactory::new();
     }
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('handle');
+    }
+
     /**
      * Get the name of the index associated with the model.
      */
     public function searchableAs(): string
     {
-        return config('scout.prefix').'brands';
+        return config('scout.prefix') . 'brands';
     }
 
     /**

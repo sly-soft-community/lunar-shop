@@ -19,9 +19,9 @@ class Price
         public Currency $currency,
         public int $unitQty = 1
     ) {
-        if (! is_int($value)) {
+        if (!is_int($value)) {
             throw new InvalidDataTypeValueException(
-                'Value was "'.(gettype($value)).'" expected "int"'
+                'Value was "' . (gettype($value)) . '" expected "int"'
             );
         }
         $this->value = $value;
@@ -96,23 +96,50 @@ class Price
         return $this->formatValue($this->unitDecimal(false), $locale, $formatterStyle, $decimalPlaces, $trimTrailingZeros);
     }
 
+    // protected function formatValue($value, $locale = null, $formatterStyle = NumberFormatter::CURRENCY, $decimalPlaces = null, $trimTrailingZeros = true)
+    // {
+    //     if (! $locale) {
+    //         $locale = App::currentLocale();
+    //     }
+    //
+    //     $formatter = new NumberFormatter($locale, $formatterStyle);
+    //
+    //     $formatter->setTextAttribute(NumberFormatter::CURRENCY_CODE, $this->currency->code);
+    //     $formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $decimalPlaces ?? $this->currency->decimal_places);
+    //
+    //     $formattedPrice = $formatter->format($value);
+    //
+    //     if ($trimTrailingZeros) {
+    //         $decimalSeparator = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
+    //
+    //         $formattedPrice = preg_replace('/(\\'.$decimalSeparator.'\d{'.$this->currency->decimal_places.'}\d*?)0+(\s*\D*)$/', '$1$2', $formattedPrice);
+    //     }
+    //
+    //     return $formattedPrice;
+    // }
+
+    // TODO
     protected function formatValue($value, $locale = null, $formatterStyle = NumberFormatter::CURRENCY, $decimalPlaces = null, $trimTrailingZeros = true)
     {
-        if (! $locale) {
+        if (!$locale) {
             $locale = App::currentLocale();
         }
 
         $formatter = new NumberFormatter($locale, $formatterStyle);
 
-        $formatter->setTextAttribute(NumberFormatter::CURRENCY_CODE, $this->currency->code);
+        $currencySymbol = config("shop.price_formatter.{$this->currency->code}");
+        if ($currencySymbol) {
+            $formatter->setSymbol(NumberFormatter::CURRENCY_SYMBOL, $currencySymbol);
+        } else {
+            $formatter->setTextAttribute(NumberFormatter::CURRENCY_CODE, $this->currency->code);
+        }
+
         $formatter->setAttribute(NumberFormatter::FRACTION_DIGITS, $decimalPlaces ?? $this->currency->decimal_places);
 
         $formattedPrice = $formatter->format($value);
 
         if ($trimTrailingZeros) {
-            $decimalSeparator = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
-
-            $formattedPrice = preg_replace('/(\\'.$decimalSeparator.'\d{'.$this->currency->decimal_places.'}\d*?)0+(\s*\D*)$/', '$1$2', $formattedPrice);
+            $formattedPrice = preg_replace('/(\.\d{' . $this->currency->decimal_places . '}\d*?)0+$/', '$1', $formattedPrice);
         }
 
         return $formattedPrice;

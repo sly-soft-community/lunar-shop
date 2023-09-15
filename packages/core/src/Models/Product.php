@@ -102,6 +102,7 @@ class Product extends BaseModel implements SpatieHasMedia
         'product_type_id',
         'status',
         'brand_id',
+        'meta',
     ];
 
     /**
@@ -111,6 +112,7 @@ class Product extends BaseModel implements SpatieHasMedia
      */
     protected $casts = [
         'attribute_data' => AsAttributeData::class,
+        'meta' => 'object',
     ];
 
     /**

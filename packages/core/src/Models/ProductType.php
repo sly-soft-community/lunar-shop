@@ -7,6 +7,8 @@ use Lunar\Base\BaseModel;
 use Lunar\Base\Traits\HasAttributes;
 use Lunar\Base\Traits\HasMacros;
 use Lunar\Database\Factories\ProductTypeFactory;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * @property int $id
@@ -19,6 +21,7 @@ class ProductType extends BaseModel
     use HasAttributes;
     use HasFactory;
     use HasMacros;
+    use HasSlug;
 
     /**
      * Return a new factory instance for the model.
@@ -26,6 +29,13 @@ class ProductType extends BaseModel
     protected static function newFactory(): ProductTypeFactory
     {
         return ProductTypeFactory::new();
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('handle');
     }
 
     /**

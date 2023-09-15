@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'text.label' => 'Текст',
+    'translated-text.label' => 'Переведенный текст',
+    'number.label' => 'Число',
+    'list.label' => 'Список',
+    'dropdown.label' => 'Выпадающий список',
+    'dropdown.missing_labels' => 'Вы должны убедиться, что каждая строка имеет метку',
+    'dropdown.value_placeholder' => 'Оставьте пустым, чтобы использовать метку',
+    'file.label' => 'Загрузка файла',
+    'file.max_files.label' => 'Максимальное количество файлов',
+    'file.choose_assets' => 'Выбрать файлы',
+    'file.uploads_empty' => 'Файлы, которые вы загрузили, появятся здесь.',
+    'file.select_files' => 'Выбрать файлы',
+    'dropdown.label_heading' => 'Метка',
+    'dropdown.value_heading' => 'Значение',
+    'dropdown.add_row_btn' => 'Добавить строку',
+    'dropdown.empty_selection' => 'Выберите значение',
+    'toggle.label' => 'Переключатель',
+    'toggle.empty_notice' => 'Оставьте пустым, чтобы использовать значения по умолчанию',
+    'toggle.on_label' => 'Значение Включено',
+    'toggle.off_label' => 'Значение Выключено',
+    'youtube.label' => 'Видео YouTube',
+    'richtext.config' => 'Вы можете ввести любую доступную конфигурацию, поддерживаемую :url.',
+];
