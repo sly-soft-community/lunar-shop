@@ -652,4 +652,12 @@ class Cart extends BaseModel
             );
         });
     }
+
+    public static function getActualUserCart()
+    {
+        return auth()->user()
+                     ->cart()
+                     ->where('completed_at', '=', null)
+                     ->first();
+    }
 }
