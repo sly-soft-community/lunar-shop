@@ -70,6 +70,7 @@ class OrderLine extends BaseModel
         'tax_total' => Price::class,
         'discount_total' => Price::class,
         'total' => Price::class,
+        'meta' => AsArrayObject::class,
     ];
 
     /**
