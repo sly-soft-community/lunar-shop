@@ -20,6 +20,11 @@ final class CreateOrder extends AbstractAction
         bool $allowMultipleOrders = false,
         int $orderIdToUpdate = null
     ): self {
+        
+        if(isset($cart->has_validate_form)){
+            unset($cart->has_validate_form);
+        }
+
         $this->passThrough = DB::transaction(function () use ($cart, $allowMultipleOrders, $orderIdToUpdate) {
             $order = $cart->draftOrder($orderIdToUpdate)->first() ?: new Order;
 
