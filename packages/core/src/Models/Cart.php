@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Lunar\Actions\Carts\AddAddress;
 use Lunar\Actions\Carts\AddOrUpdatePurchasable;
@@ -75,7 +76,7 @@ class Cart extends BaseModel
         'promotions',
         'freeItems',
     ];
-
+    
     /**
      * The cart sub total.
      * Sum of cart line amounts, before tax, shipping and cart-level discounts.
@@ -651,6 +652,24 @@ class Cart extends BaseModel
                 FingerprintMismatchException::class
             );
         });
+    }
+
+    public function getIsClosedCartAttribute()
+    {
+        if(!empty($this->orders) && empty($this->completed_at)) {
+            $this->closeCartWithOrder();
+        }
+
+        return !empty($this->completed_at) ? true : false;
+    }
+    public function closeCartWithOrder()
+    {
+        if($this->orders()->exists()) {
+            $this->completed_at = Carbon::now();
+            $this->save();
+        }
+
+        return  !empty($this->completed_at)  && !empty($this->orders) ? true : false;
     }
 
     public static function getActualUserCart()
