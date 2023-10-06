@@ -281,6 +281,34 @@ return [
     'discounts.show.stop.label' => 'Stop other discounts applying after this one',
     'discounts.show.danger_zone.label' => 'Delete discount',
     'discounts.show.danger_zone.instructions' => 'Enter the name of the discount to confirm removal.',
+    'discounts.allert_availability_across_channels' => 'This discount has no availability across channels.',
+    'discounts.priority' => 'Priority',
+    'discounts.priority_faq' => 'Discounts with higher priority will be applied first.',
+    'discounts.based' => 'Basic Information',
+    'discount.type' => 'Discount Type',
+
+
+
+    'discounts.conditions.title' => 'Conditions',
+    'discounts.conditions.coupon' => 'Coupon',
+    'discounts.conditions.coupon.instructions' => 'Enter the coupon required for the discount to apply, if left blank it will apply automatically.',
+    'discounts.conditions.minimum_cart_amount' => 'Minimum cart amount',
+    'discounts.conditions.minimum_cart_amount.instructions' => 'The minimum cart sub total required for this discount to apply',
+    'discounts.conditions.ulimited_uses' => 'Leave blank for unlimited uses.',
+
+
+    'values' => [
+        "low" => 'Low',
+        "medium" => 'Medium',
+        "high" => 'High'
+    ],
+
+
+    'translations' => [
+        'locales' => 'Locales'
+    ],
+
+
     /**
      * Model URLs component
      */

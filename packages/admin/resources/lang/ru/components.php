@@ -278,12 +278,36 @@ return [
     'discounts.index.status.scheduled' => 'Запланированные',
     'discounts.index.status.expired' => 'Истекшие',
     'discounts.index.create_discount' => 'Создать скидку',
+    'discounts.index.creating_discount' => 'Создание скидки',
     'discounts.create.title' => 'Создать скидку',
     'discounts.create_btn' => 'Создать скидку',
     'discounts.save_btn' => 'Сохранить скидку',
     'discounts.show.stop.label' => 'Остановить применение других скидок после этой',
     'discounts.show.danger_zone.label' => 'Удалить скидку',
     'discounts.show.danger_zone.instructions' => 'Введите имя скидки для подтверждения удаления.',
+    'discounts.allert_availability_across_channels' => 'Эта скидка недоступна в разных каналах.',
+    'discounts.priority' => 'Приоритет',
+    'discounts.priority_faq' => 'Скидки с более высоким приоритетом будут применяться в первую очередь.',
+    'discounts.based' => 'Основная информация',
+    'discount.type' => 'Тип скидки',
+
+
+    'discounts.conditions.title' => 'Условия',
+    'discounts.conditions.coupon' => 'Купон',
+    'discounts.conditions.coupon.instructions' => 'Введите купон, необходимый для применения скидки. Если оставить пустым, он будет применен автоматически.',
+    'discounts.conditions.minimum_cart_amount' => 'Минимальная сумма корзины',
+    'discounts.conditions.minimum_cart_amount.instructions' => 'Минимальная сумма в корзине, необходимая для применения этой скидки.',
+    'discounts.conditions.ulimited_uses' => 'Оставьте пустым для неограниченного использования.',
+
+    'values' => [
+        "low" => 'Низкий',
+        "medium" => 'Сердний',
+        "high" => 'Высокий'
+    ],
+    'translations' => [
+        'locales' => 'Переводы'
+    ],
+
     /**
      * Model URLs component
      */

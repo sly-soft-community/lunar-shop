@@ -4,7 +4,7 @@
             @if($discount->id)
                 {{ $discount->name }}
             @else
-                Create Discount
+            @lang('adminhub::components.discounts.index.creating_discount')
             @endif
         </h1>
     </header>

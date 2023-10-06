@@ -14,7 +14,7 @@
             @if (!$this->hasChannelAvailability)
                 <div>
                     <x-hub::alert level="danger">
-                        This discount has no availability across channels
+                        @lang('adminhub::components.discounts.allert_availability_across_channels')
                     </x-hub::alert>
                 </div>
             @endif
@@ -24,11 +24,11 @@
 
             <div class="bg-white p-4 shadow rounded">
                 <div class="grid grid-cols-2 gap-4 items-center">
-                    <x-hub::input.group label="Priority" for="priority" instructions="Discounts with higher priority will be applied first.">
+                    <x-hub::input.group label="{{ __('adminhub::components.discounts.priority') }}" for="priority" instructions="{{ __('adminhub::components.discounts.priority_faq') }}">
                         <x-hub::input.select wire:model="discount.priority" id="priority">
-                            <option value="1">Low</option>
-                            <option value="5">Medium</option>
-                            <option value="10">High</option>
+                            <option value="1">@lang('adminhub::components.values.low')</option>
+                            <option value="5">@lang('adminhub::components.values.medium')</option>
+                            <option value="10">@lang('adminhub::components.values.high')</option>
                         </x-hub::input.select>
                     </x-hub::input.group>
 
