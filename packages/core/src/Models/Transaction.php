@@ -98,4 +98,9 @@ class Transaction extends BaseModel
     {
         return $this->driver()->capture($this, $amount);
     }
+
+    public function childs()
+    {
+        return $this->where('parent_transaction_id' , $this->id)->get();
+    }
 }
