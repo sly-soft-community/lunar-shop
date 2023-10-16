@@ -16,7 +16,7 @@ class BuyXGetY extends AbstractDiscountType
      */
     public function getName(): string
     {
-        return 'Buy X Get Y';
+        return __('adminhub::components.discounts.amount-off.buy_x_get_y');
     }
 
     /**

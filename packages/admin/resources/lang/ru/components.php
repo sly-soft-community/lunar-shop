@@ -304,6 +304,24 @@ return [
         "medium" => 'Сердний',
         "high" => 'Высокий'
     ],
+    'discounts.amount-off' => 'Сумма скидки',
+    'discounts.amount-off.percentage' => 'Процент',
+    'discounts.amount-off.fixed-amount' => 'Фиксируемое количество',
+
+    'discounts.amount-off.buy_x_get_y' => 'Купи X Получи Y',
+    'discounts.amount-off.buy_x_get_y.qualify_products' => 'Квалифицирующие продукты',
+    'discounts.amount-off.buy_x_get_y.select_the_products' => 'Выберите продукты, необходимые для применения скидки',
+    'discounts.amount-off.buy_x_get_y.no_products_currently_selected' => 'В настоящее время продукты не выбраны.',
+    'discounts.amount-off.buy_x_get_y.product_quantity' => 'Количество продуктов',
+    'discounts.amount-off.buy_x_get_y.set_how_many_of_the_above_products_are_required_to_qualify_for_a_reward' => 'Укажите, сколько из вышеуказанных продуктов необходимо выбрать для получения награды',
+    'discounts.amount-off.buy_x_get_y.product_rewards' => 'Награды за продукты',
+    'discounts.amount-off.buy_x_get_y.select_which_products_will_be_discounted' => 'Выберите продукты, которые будут снижены в цене, если они есть в корзине, и выполняются вышеперечисленные условия.',
+    'discounts.amount-off.buy_x_get_y.if_one_or_more_items_are_in_the_cart' => 'Если в корзине есть один или более товаров, самый дешевый товар будет снижен в цене.',
+    'discounts.amount-off.buy_x_get_y.no_of_free_items' => 'Количество бесплатных товаров',
+    'discounts.amount-off.buy_x_get_y.maximum_reward_quantity' => 'Максимальное количество наград',
+    'discounts.amount-off.buy_x_get_y.how_many_of_each_item_are_discounted' => 'Сколько каждого товара снижено в цене',
+    'discounts.amount-off.buy_x_get_y.the_maximum_amount_of_products_which_can_be_discounted' => 'Максимальное количество товаров, которые могут быть снижены в цене, независимо от критериев.',
+    'discounts.amount-off.buy_x_get_y.you_must_select_at_least_1_qualifying_product' => 'Вы должны выбрать как минимум 1 квалифицирующий продукт',
     'translations' => [
         'locales' => 'Переводы'
     ],

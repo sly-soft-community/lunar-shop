@@ -9,7 +9,7 @@
                 'bg-sky-500 text-white font-medium' => empty($this->discount->data['fixed_value'])
             ])
         >
-            Percentage
+        @lang('adminhub::components.discounts.amount-off.percentage')
         </button>
         <button
             wire:click="$set('discount.data.fixed_value', true)"
@@ -20,7 +20,7 @@
                 'bg-sky-500 text-white font-medium' => $this->discount->data['fixed_value'] ?? false
             ])
         >
-            Fixed amount
+        @lang('adminhub::components.discounts.amount-off.fixed-amount')
         </button>
     </div>
 
@@ -39,7 +39,7 @@
 
     <div @class(['hidden' => $this->discount->data['fixed_value'] ?? false])>
         <div class="grid grid-cols-2">
-            <x-hub::input.group for="type" label="Percentage" :error="$errors->first('discount.data.percentage')" >
+            <x-hub::input.group for="type" label="{{ __('adminhub::components.discounts.amount-off.percentage') }}" :error="$errors->first('discount.data.percentage')" >
                 <x-hub::input.text wire:model="discount.data.percentage" type="number" step="any" max="100" />
             </x-hub::input.group>
         </div>
