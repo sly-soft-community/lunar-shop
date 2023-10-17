@@ -163,6 +163,7 @@ return [
     'taxes.tax-classes.index.delete_message' => 'Вы уверены? Это может привести к потере данных.',
     'taxes.tax-classes.index.delete_message_disabled' => 'Вы не можете удалить налоговый класс, который связан с вариантами продукта',
     'taxes.tax-classes.index.delete_message_default' => 'Вы должны выбрать новый налоговый класс перед удалением',
+    'taxes.tax-zones.form.title' => 'Страны', 
     /**
      * Customer Groups.
      */

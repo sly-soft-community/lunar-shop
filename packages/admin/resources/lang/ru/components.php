@@ -188,6 +188,7 @@ return [
     'products.index.deleted' => 'Удален',
     'products.index.only_deleted_visible' => 'В данный момент отображаются только удаленные продукты',
     'products.index.products_empty' => 'Не удалось найти продукты, соответствующие поиску/фильтрам.',
+    'products.create.seperate_tags' => 'Отдельные теги с помощью запятой',
     /**
      * Order Capture.
      */
@@ -278,12 +279,54 @@ return [
     'discounts.index.status.scheduled' => 'Запланированные',
     'discounts.index.status.expired' => 'Истекшие',
     'discounts.index.create_discount' => 'Создать скидку',
+    'discounts.index.creating_discount' => 'Создание скидки',
     'discounts.create.title' => 'Создать скидку',
     'discounts.create_btn' => 'Создать скидку',
     'discounts.save_btn' => 'Сохранить скидку',
     'discounts.show.stop.label' => 'Остановить применение других скидок после этой',
     'discounts.show.danger_zone.label' => 'Удалить скидку',
     'discounts.show.danger_zone.instructions' => 'Введите имя скидки для подтверждения удаления.',
+    'discounts.allert_availability_across_channels' => 'Эта скидка недоступна в разных каналах.',
+    'discounts.priority' => 'Приоритет',
+    'discounts.priority_faq' => 'Скидки с более высоким приоритетом будут применяться в первую очередь.',
+    'discounts.based' => 'Основная информация',
+    'discount.type' => 'Тип скидки',
+
+
+    'discounts.conditions.title' => 'Условия',
+    'discounts.conditions.coupon' => 'Купон',
+    'discounts.conditions.coupon.instructions' => 'Введите купон, необходимый для применения скидки. Если оставить пустым, он будет применен автоматически.',
+    'discounts.conditions.minimum_cart_amount' => 'Минимальная сумма корзины',
+    'discounts.conditions.minimum_cart_amount.instructions' => 'Минимальная сумма в корзине, необходимая для применения этой скидки.',
+    'discounts.conditions.ulimited_uses' => 'Оставьте пустым для неограниченного использования.',
+
+    'values' => [
+        "low" => 'Низкий',
+        "medium" => 'Сердний',
+        "high" => 'Высокий'
+    ],
+    'discounts.amount-off' => 'Сумма скидки',
+    'discounts.amount-off.percentage' => 'Процент',
+    'discounts.amount-off.fixed-amount' => 'Фиксируемое количество',
+
+    'discounts.amount-off.buy_x_get_y' => 'Купи X Получи Y',
+    'discounts.amount-off.buy_x_get_y.qualify_products' => 'Квалифицирующие продукты',
+    'discounts.amount-off.buy_x_get_y.select_the_products' => 'Выберите продукты, необходимые для применения скидки',
+    'discounts.amount-off.buy_x_get_y.no_products_currently_selected' => 'В настоящее время продукты не выбраны.',
+    'discounts.amount-off.buy_x_get_y.product_quantity' => 'Количество продуктов',
+    'discounts.amount-off.buy_x_get_y.set_how_many_of_the_above_products_are_required_to_qualify_for_a_reward' => 'Укажите, сколько из вышеуказанных продуктов необходимо выбрать для получения награды',
+    'discounts.amount-off.buy_x_get_y.product_rewards' => 'Награды за продукты',
+    'discounts.amount-off.buy_x_get_y.select_which_products_will_be_discounted' => 'Выберите продукты, которые будут снижены в цене, если они есть в корзине, и выполняются вышеперечисленные условия.',
+    'discounts.amount-off.buy_x_get_y.if_one_or_more_items_are_in_the_cart' => 'Если в корзине есть один или более товаров, самый дешевый товар будет снижен в цене.',
+    'discounts.amount-off.buy_x_get_y.no_of_free_items' => 'Количество бесплатных товаров',
+    'discounts.amount-off.buy_x_get_y.maximum_reward_quantity' => 'Максимальное количество наград',
+    'discounts.amount-off.buy_x_get_y.how_many_of_each_item_are_discounted' => 'Сколько каждого товара снижено в цене',
+    'discounts.amount-off.buy_x_get_y.the_maximum_amount_of_products_which_can_be_discounted' => 'Максимальное количество товаров, которые могут быть снижены в цене, независимо от критериев.',
+    'discounts.amount-off.buy_x_get_y.you_must_select_at_least_1_qualifying_product' => 'Вы должны выбрать как минимум 1 квалифицирующий продукт',
+    'translations' => [
+        'locales' => 'Переводы'
+    ],
+
     /**
      * Model URLs component
      */

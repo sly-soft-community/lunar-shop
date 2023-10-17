@@ -32,6 +32,7 @@ return [
     'product-search.title' => 'Search for products',
     'product-search.associate_self' => 'You cannot associate the same product',
     'product-search.commit_btn' => 'Select Products',
+    'products.create.seperate_tags' => 'Seperate tags with a ,',
     /**
      * Option Value Create Modal.
      */
@@ -281,6 +282,51 @@ return [
     'discounts.show.stop.label' => 'Stop other discounts applying after this one',
     'discounts.show.danger_zone.label' => 'Delete discount',
     'discounts.show.danger_zone.instructions' => 'Enter the name of the discount to confirm removal.',
+    'discounts.allert_availability_across_channels' => 'This discount has no availability across channels.',
+    'discounts.priority' => 'Priority',
+    'discounts.priority_faq' => 'Discounts with higher priority will be applied first.',
+    'discounts.based' => 'Basic Information',
+    'discount.type' => 'Discount Type',
+
+
+
+    'discounts.conditions.title' => 'Conditions',
+    'discounts.conditions.coupon' => 'Coupon',
+    'discounts.conditions.coupon.instructions' => 'Enter the coupon required for the discount to apply, if left blank it will apply automatically.',
+    'discounts.conditions.minimum_cart_amount' => 'Minimum cart amount',
+    'discounts.conditions.minimum_cart_amount.instructions' => 'The minimum cart sub total required for this discount to apply',
+    'discounts.conditions.ulimited_uses' => 'Leave blank for unlimited uses.',
+
+
+    'values' => [
+        "low" => 'Low',
+        "medium" => 'Medium',
+        "high" => 'High'
+    ],
+
+    'discounts.amount-off' => 'Amount Off',
+    'discounts.amount-off.percentage' => 'Percentage', 
+    'discounts.amount-off.fixed-amount' => 'Fixed amount',
+
+    'discounts.amount-off.buy_x_get_y' => 'Buy X Get Y',
+    'discounts.amount-off.buy_x_get_y.qualify_products' => 'Qualify Products',
+    'discounts.amount-off.buy_x_get_y.select_the_products' => 'Select the products required for the discount to apply',
+    'discounts.amount-off.buy_x_get_y.no_products_currently_selected' => 'No products currently selected.',
+    'discounts.amount-off.buy_x_get_y.product_quantity' => 'Product Quantity',
+    'discounts.amount-off.buy_x_get_y.set_how_many_of_the_above_products_are_required_to_qualify_for_a_reward' => 'Set how many of the above products are required to qualify for a reward',
+    'discounts.amount-off.buy_x_get_y.product_rewards' => 'Product Rewards',
+    'discounts.amount-off.buy_x_get_y.select_which_products_will_be_discounted' => 'Select which products will be discounted if they exist in the cart and the above conditions are met.',
+    'discounts.amount-off.buy_x_get_y.if_one_or_more_items_are_in_the_cart' => 'If one or more items are in the cart, the cheapest item will be discounted.',
+    'discounts.amount-off.buy_x_get_y.no_of_free_items' => 'No. of free items',
+    'discounts.amount-off.buy_x_get_y.maximum_reward_quantity' => 'Maximum reward quantity',
+    'discounts.amount-off.buy_x_get_y.how_many_of_each_item_are_discounted' => 'How many of each item are discounted',
+    'discounts.amount-off.buy_x_get_y.the_maximum_amount_of_products_which_can_be_discounted' => 'The maximum amount of products which can be discounted, regardless of criteria.',
+    'discounts.amount-off.buy_x_get_y.you_must_select_at_least_1_qualifying_product'=>'You must select at least 1 qualifying product',
+    'translations' => [
+        'locales' => 'Locales'
+    ],
+
+
     /**
      * Model URLs component
      */

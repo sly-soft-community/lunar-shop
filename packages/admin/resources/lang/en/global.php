@@ -127,4 +127,10 @@ return [
     'not_provided' => 'Not Provided',
     'billing_email' => 'Billing Email',
     'add_new' => 'Add new',
+    'search' => 'Search',
+    'statuses' => [
+        'all' =>    'All Statuses',
+        'published' => 'Published',
+        'draft' => 'Draft',
+    ]
 ];

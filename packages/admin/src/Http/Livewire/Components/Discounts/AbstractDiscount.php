@@ -410,12 +410,12 @@ abstract class AbstractDiscount extends Component
                 'has_errors' => false,
             ],
             [
-                'title' => 'Limitations',
+                'title' =>  __('adminhub::partials.discounts.limitations.heading') ,
                 'id' => 'limitations',
                 'has_errors' => false,
             ],
             [
-                'title' => 'Conditions',
+                'title' =>  __('adminhub::components.discounts.conditions.title') ,
                 'id' => 'conditions',
                 'has_errors' => $this->errorBag->hasAny([
                     'minPrices.*.price',
@@ -424,7 +424,7 @@ abstract class AbstractDiscount extends Component
                 ]),
             ],
             [
-                'title' => 'Discount Type',
+                'title' => __('adminhub::components.discount.type'),
                 'id' => 'type',
                 'has_errors' => $this->errorBag->hasAny(array_merge(
                     $this->getDiscountComponent()->rules(),

@@ -30,13 +30,13 @@ class AmountOff extends AbstractDiscountType
     public function getValidationMessages()
     {
         $messages = [
-            'discount.data.percentage.required_if' => 'This field is required',
+            'discount.data.percentage.required_if' => __('adminhub::validation.generic_required'),
             'discount.data.percentage.min' => 'Percentage must be at least :min',
-            'discount.data.max_reward_qty.required' => 'This field is required',
+            'discount.data.max_reward_qty.required' => __('adminhub::validation.generic_required'),
         ];
 
         foreach ($this->currencies as $currency) {
-            $messages["discount.data.fixed_values.{$currency->code}.required_if"] = 'This field is required';
+            $messages["discount.data.fixed_values.{$currency->code}.required_if"] = __('adminhub::validation.generic_required');
         }
 
         return $messages;

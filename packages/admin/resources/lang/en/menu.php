@@ -24,6 +24,8 @@ return [
     'product.availability' => 'Availability',
     'product.variants' => 'Variants',
     'product.pricing' => 'Pricing',
+    'product.limitations' => 'Limitations',
+    'product.conditions' => 'Conditions',
     'product.inventory' => 'Inventory',
     'product.shipping' => 'Shipping',
     'product.associations' => 'Associations',
@@ -47,4 +49,24 @@ return [
     'dropdown-options' => 'Open options',
     'open-sidebar' => 'Open sidebar',
     'close-sidebar' => 'Close sidebar',
+
+      /**
+     * Settings menu items.
+     */
+    'settings.store' => 'Store',
+    'settings.attributes' => 'Attributes',
+    'settings.channels' => 'Channels',
+    'settings.currencies' => 'Currencies',
+    'settings.customer-groups' => 'Customer Groups',
+    'settings.languages' => 'Languages',
+    'settings.tags' => 'Tags',
+    'settings.taxes' => 'Taxes',
+    'settings.product' => 'Product',
+    'settings.options' => 'Options',
+    'settings.admin' => 'Admin',
+    'settings.activity-log' => 'Activity Log',
+    'settings.addons' => 'Addons',
+    'settings.staff' => 'Staff',
+    'settings.taxes.zone' =>'Tax Zones',
+    'settings.taxes.class' =>'Tax Classes'
 ];

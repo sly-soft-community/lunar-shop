@@ -49,8 +49,8 @@
                 </button>
             </span>
         </template>
-
-        <input placeholder="Seperate tags with a ,"
+        
+        <input placeholder="{{ __('adminhub::components.products.create.seperate_tags')  }}"
                maxlength="255"
                x-model.debounce.500ms="value"
                x-on:keyup.enter="addTag($event.target.value)"

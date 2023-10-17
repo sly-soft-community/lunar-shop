@@ -6,7 +6,7 @@
       'hover:text-gray-700 text-gray-500' =>  request()->route()->getName() != 'hub.taxes.index'
     ])
   >
-    Tax Zones
+  @lang('adminhub::menu.settings.taxes.zone')
   </a>
 
   <a href="{{ route('hub.taxes.tax-classes.index') }}"
@@ -16,6 +16,6 @@
       'hover:text-gray-700 text-gray-500' =>  request()->route()->getName() != 'hub.taxes.tax-classes.index'
     ])
   >
-    Tax Classes
+  @lang('adminhub::menu.settings.taxes.class')
   </a>
 </nav>

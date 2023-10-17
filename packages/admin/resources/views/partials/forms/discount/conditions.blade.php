@@ -2,7 +2,7 @@
     <div class="flex-col px-4 py-5 space-y-4 bg-white sm:p-6">
         <header>
             <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Conditions
+                @lang('adminhub::components.discounts.based')
             </h3>
         </header>
 
@@ -10,15 +10,15 @@
             <div class="grid grid-cols-2 gap-4">
                 <x-hub::input.group
                     for="coupon"
-                    label="Coupon"
+                    :label="__('adminhub::components.discounts.conditions.coupon')"
                     :error="$errors->first('discount.coupon')"
-                    instructions="Enter the coupon required for the discount to apply, if left blank it will apply automatically."
+                    :instructions="__('adminhub::components.discounts.conditions.coupon.instructions')"
                 >
                     <x-hub::input.text wire:model.defer="discount.coupon" id="discount" />
                 </x-hub::input.group>
 
                 <div>
-                    <x-hub::input.group for="max_uses" :error="$errors->first('discount.max_uses')" :label="__('adminhub::inputs.max_uses.label')" instructions="Leave blank for unlimited uses.">
+                    <x-hub::input.group for="max_uses" :error="$errors->first('discount.max_uses')" :label="__('adminhub::inputs.max_uses.label')" :instructions="__('adminhub::components.discounts.conditions.ulimited_uses')">
                         <x-hub::input.text type="number" wire:model="discount.max_uses" />
                     </x-hub::input.group>
                 </div>
@@ -35,8 +35,8 @@
                           </select>
                     </header>
                     <x-hub::input.group
-                      label="Minimum cart amount"
-                      instructions="The minimum cart sub total required for this discount to apply"
+                      :label="__('adminhub::components.discounts.conditions.minimum_cart_amount')"
+                      :instructions="__('adminhub::components.discounts.conditions.minimum_cart_amount.instructions')"
                       for="basePrice"
                       :errors="$errors->get('minPrices.*.price')"
                     >
@@ -48,8 +48,8 @@
                     </x-hub::input.group>
                 </div>
                 <div>
-                    <x-hub::input.group for="max_uses_per_user" :error="$errors->first('discount.max_uses_per_user')" :label="__('adminhub::inputs.max_uses_per_user.label')" instructions="Leave blank for unlimited uses.">
-                        <x-hub::input.text type="number" wire:model="discount.max_uses_per_user" />
+                    <x-hub::input.group for="max_uses_per_user" :error="$errors->first('discount.max_uses_per_user')" :label="__('adminhub::inputs.max_uses_per_user.label')" :instructions="__('adminhub::components.discounts.conditions.ulimited_uses')">
+                    <x-hub::input.text type="number" wire:model="discount.max_uses_per_user" />
                     </x-hub::input.group>
                 </div>
             </div>

@@ -61,6 +61,6 @@
   </ul>
 
   <div class="mt-2">
-    <x-hub::input.text x-model="newItem" placeholder="Type item and press enter" @keydown.enter="addItem()" />
+    <x-hub::input.text x-model="newItem" placeholder="{{ __('adminhub::inputs.add_new_item') }}" @keydown.enter="addItem()" />
   </div>
 </div>

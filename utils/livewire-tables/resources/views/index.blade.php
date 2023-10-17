@@ -92,7 +92,7 @@
 
                                     <button wire:click="$set('query', '')"
                                             class="lt-absolute lt-top-1/2 -lt-translate-y-1/2 lt-right-2 lt-rounded-full lt-p-1 hover:lt-bg-gray-100 lt-transition peer-placeholder-shown:lt-hidden">
-                                        <span class="lt-sr-only">Clear</span>
+                                        <span class="lt-sr-only">@lang('adminhub::global.clear')</span>
 
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              fill="none"
@@ -119,8 +119,8 @@
 
                         @if (count($this->tableFilters) && $this->filterable)
                             <x-l-tables::button x-on:click="showFilters = !showFilters">
-                                Filters
-
+                                
+                                @lang('adminhub::global.filter')
                                 @if ($this->activeFiltersCount)
                                     <sup class="lt-top-0">
                                         ({{ $this->activeFiltersCount }})
