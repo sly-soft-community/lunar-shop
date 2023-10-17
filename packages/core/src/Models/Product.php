@@ -23,6 +23,7 @@ use Lunar\Database\Factories\ProductFactory;
 use Lunar\FieldTypes\TranslatedText;
 use Lunar\Jobs\Products\Associations\Associate;
 use Lunar\Jobs\Products\Associations\Dissociate;
+use Modules\Shop\Entities\FavoriteProduct;
 use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 
 /**
@@ -293,5 +294,41 @@ class Product extends BaseModel implements SpatieHasMedia
             'product_id',
             'priceable_id'
         )->wherePriceableType(ProductVariant::class);
+    }
+
+
+    public function usersAddedfavorites(): BelongsToMany
+    {
+        $prefix = config('lunar.database.table_prefix');
+
+        return $this->belongsToMany(Customer::class, "{$prefix}favorite_products", 'product_id', 'customer_user_id');
+    }
+    
+    public function favoriteProduct()
+    {
+        return $this->hasMany(FavoriteProduct::class, 'product_id');
+    }
+
+    public function getIsFavoriteAttribute()
+    {
+        return !empty(auth()->user()?->customers->first()) ?
+            $this->usersAddedfavorites()
+            ->where('customer_user_id', auth()->user()->customers->first()->id)
+            ->where('product_id', $this->id)
+            ->exists() :
+            false;
+    }
+
+    public function getIsFavoriteIdAttribute()
+    {
+        $id = null;
+
+        if (!empty(auth()->user()?->customers->first())) {
+            $customer = auth()->user()->customers->first();
+
+            return $this->favoriteProduct()->where('customer_user_id', $customer->id)->first()?->id;
+        }
+
+        return  $id;
     }
 }
