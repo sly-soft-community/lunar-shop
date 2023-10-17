@@ -74,8 +74,10 @@ class MenuSlot
 
         $index = false;
 
+        
         if ($after) {
             $index = $this->items->search(function ($item) use ($after) {
+
                 return $item->handle == $after;
             });
         }

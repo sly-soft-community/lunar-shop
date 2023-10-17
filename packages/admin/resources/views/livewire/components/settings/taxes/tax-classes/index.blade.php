@@ -29,11 +29,11 @@
                         </div>
                     @else
                         <div class="space-y-4">
-                            <x-hub::input.group label="Name" for="name" :error="$errors->first('taxClass.name')" required>
+                            <x-hub::input.group label="{{ __('adminhub::global.name') }}" for="name" :error="$errors->first('taxClass.name')" required>
                                 <x-hub::input.text wire:model="taxClass.name" :error="$errors->first('taxClass.name')" />
                             </x-hub::input.group>
 
-                            <x-hub::input.group label="Default" for="default">
+                            <x-hub::input.group label="{{ __('adminhub::global.default') }}" for="default">
                                 <x-hub::input.toggle :on="$taxClass->default" wire:click="toggleDefault" :disabled="$this->shouldDisableDefault" />
                             </x-hub::input.group>
                         </div>
@@ -78,8 +78,8 @@
 
     <x-hub::table>
         <x-slot name="head">
-            <x-hub::table.heading>Name</x-hub::table.heading>
-            <x-hub::table.heading>Default</x-hub::table.heading>
+            <x-hub::table.heading>{{ __('adminhub::global.name') }}</x-hub::table.heading>
+            <x-hub::table.heading>{{ __('adminhub::global.default') }}</x-hub::table.heading>
             <x-hub::table.heading></x-hub::table.heading>
         </x-slot>
         <x-slot name="body">

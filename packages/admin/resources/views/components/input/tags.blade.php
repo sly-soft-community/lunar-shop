@@ -37,7 +37,7 @@
       </span>
     </template>
     <input
-      placeholder="Seperate tags with a ,"
+      placeholder="{{ __('adminhub::components.products.create.seperate_tags')  }}"
       maxlength="255"
       x-model="value"
       x-on:keyup.enter.prevent="addTag($event.target.value)"

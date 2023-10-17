@@ -32,6 +32,7 @@ return [
     'product-search.title' => 'Search for products',
     'product-search.associate_self' => 'You cannot associate the same product',
     'product-search.commit_btn' => 'Select Products',
+    'products.create.seperate_tags' => 'Seperate tags with a ,',
     /**
      * Option Value Create Modal.
      */

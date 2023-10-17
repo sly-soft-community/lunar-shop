@@ -207,7 +207,7 @@ class Table extends Component
      */
     public function getSearchPlaceholderProperty(): string
     {
-        return 'Search';
+        return __('adminhub::global.search');
     }
 
     /**

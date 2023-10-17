@@ -188,6 +188,7 @@ return [
     'products.index.deleted' => 'Удален',
     'products.index.only_deleted_visible' => 'В данный момент отображаются только удаленные продукты',
     'products.index.products_empty' => 'Не удалось найти продукты, соответствующие поиску/фильтрам.',
+    'products.create.seperate_tags' => 'Отдельные теги с помощью запятой',
     /**
      * Order Capture.
      */

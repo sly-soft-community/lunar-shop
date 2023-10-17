@@ -47,12 +47,12 @@ class ProductsTable extends Table
         $this->tableBuilder->addFilter(
             SelectFilter::make('status')->options(function () {
                 $statuses = collect([
-                    'published' => 'Published',
-                    'draft' => 'Draft',
+                    'published' => __('adminhub::global.statuses.published'),
+                    'draft' => __('adminhub::global.statuses.draft')
                 ]);
 
                 return collect([
-                    null => 'All Statuses',
+                    null => __('adminhub::global.statuses.all'),
                 ])->merge($statuses);
             })->query(function ($filters, $query) {
                 $value = $filters->get('status');

@@ -112,4 +112,7 @@ return [
     'max_uses.label' => 'Max uses',
     'max_uses_per_user.label' => 'Max uses per user',
     'size.placeholder' => 'Size',
+    'add_new_item' => 'Type item and press enter',
+    'add_comment' => 'Add a comment',
+    'add_alt_text' => 'Enter Alt. text'
 ];

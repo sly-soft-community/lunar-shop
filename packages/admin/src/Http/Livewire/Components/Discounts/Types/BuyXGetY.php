@@ -160,9 +160,9 @@ class BuyXGetY extends AbstractDiscountType
     public function getValidationMessages()
     {
         return [
-            'discount.data.min_qty.required' => 'This field is required',
-            'discount.data.reward_qty.required' => 'This field is required',
-            'discount.data.max_reward_qty.required' => 'This field is required',
+            'discount.data.min_qty.required' => __('adminhub::validation.generic_required'),
+            'discount.data.reward_qty.required' => __('adminhub::validation.generic_required'),
+            'discount.data.max_reward_qty.required' => __('adminhub::validation.generic_required'),
         ];
     }
 

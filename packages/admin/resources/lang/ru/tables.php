@@ -24,6 +24,8 @@ return [
     'headings.brand' => 'Бренд',
     'headings.sku' => 'Артикул (SKU)',
     'headings.product_type' => 'Тип продукта',
+
+    'headings.type' => 'Тип',
     'headings.stock' => 'Склад',
     'headings.product_count' => 'Количество продуктов',
     'headings.mapped_attributes_count' => 'Количество атрибутов',
