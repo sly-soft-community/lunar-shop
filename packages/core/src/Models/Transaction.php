@@ -103,4 +103,9 @@ class Transaction extends BaseModel
     {
         return $this->where('parent_transaction_id' , $this->id)->get();
     }
+
+    public function  parent()
+    {
+        return $this->belongsTo($this, 'parent_transaction_id');
+    }
 }
