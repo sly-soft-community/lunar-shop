@@ -10,4 +10,5 @@ return [
   'staff' => 'Сотрудник',
   'attribute' => 'Атрибут',
   'currency' => 'Валюта',
+  'brand' =>  'Бренд'
 ];

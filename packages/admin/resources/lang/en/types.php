@@ -10,4 +10,5 @@ return [
   'staff' => 'Staff',
   'attribute' => 'Attribute',
   'currency' => 'Currency',
+  'brand' =>  'Brand'
 ];
