@@ -22,7 +22,90 @@ php artisan lunar:hub:install
 
 ## Support Policy
 
-Lunar currently provides bug fixes and security updates for only the latest minor release, e.g. `0.5`.
+Lunar currently provides bug fixes and security updates for only the latest minor release, e.g. `0.7`.
+
+## 0.7
+
+### High Impact
+
+#### TaxBreakdown casting has been refactored
+
+Database columns which have `tax_breakdown` casting will now actually cast back into the `TaxBreakdown` object. This means you will need to update any storefront views or API transformers to accommodate this.
+
+Before:
+
+```php
+@foreach ($order->tax_breakdown as $tax)
+    {{ $tax->total->formatted }}
+@endforeach
+```
+
+```php
+@foreach ($order->tax_breakdown->amounts as $tax)
+    {{ $tax->price->formatted }}
+@endforeach
+```
+
+When migrations are run, a state update routine will trigger to convert all existing `tax_breakdown` column. Please ensure you take a backup of your database beforehand and avoid running in production until you are satisfied the data is correct.
+
+### Medium Impact
+
+#### Discount updates
+
+Limitations and exclusions on discounts have had a revamp, please double-check all discounts you have in Lunar to ensure they are all correct. Generally speaking the integrity should be unaffected, but it's better to be sure.
+
+#### Calculate lines pipeline update
+
+If you are using unit quantities greater than `1`, there was an issue in the calculate lines pipeline which resulted in the unit quantity being applied twice, so if the price was `10` with a unit quantity of `100` it would show the unit price as `0.001` instead of `0.01`. This should be resolved going forward to show correctly.
+
+### Low Impact
+
+#### Click & Collect parameter added to `ShippingOption`
+
+The `Lunar\DataTypes\ShippingOption` class now has an additional `collect` parameter. This can be used to determine whether the shipping option is considered "collect in store". This defaults to `false` so there are no additional steps if your store doesn't offer click and collect.
+
+```php
+ShippingManifest::addOption(
+    new ShippingOption(
+        name: 'Pick up in store',
+        description: 'Pick your order up in store',
+        identifier: 'PICKUP',
+        price: new Price(/** .. */),
+        taxClass: $taxClass,
+        collect: true
+    )
+);
+```
+
+
+## 0.6
+
+### High Impact
+
+#### Search indexing refactor
+
+Search indexing has been completely re-written to be more extendable and performant. You will need to migrate
+any `Observer` classes that use the `indexer` event to the new indexer class implementation.
+
+The following methods have also been removed from the `Searchable` trait and should be migrated.
+
+- `addFilterableAttributes`
+- `addSearchableAttributes`
+- `addSortableAttributes`
+- `getObservableEvents`
+
+If you still wish to use these methods you will need to re-implement them yourself, however this is highly discouraged.
+
+See the [`Search Extending`](/core/extending/search) guide for more information about what indexer classes are and how
+to use them.
+
+#### Licensing Manager has been removed
+
+You will need ro re-run the addons discover command to update the manifest. No additional steps are required for addons.
+
+```shell
+$ php artisan lunar:addons:discover
+````
 
 ## 0.5
 
@@ -30,7 +113,9 @@ Lunar currently provides bug fixes and security updates for only the latest mino
 
 #### `meta` field cast with `Illuminate\Database\Eloquent\Casts\AsArrayObject`
 
-All models with `meta` attribute are now cast with Laravel's [`AsArrayObject::class`](https://laravel.com/docs/10.x/eloquent-mutators#array-object-and-collection-casting). Change your code to get the value
+All models with `meta` attribute are now cast with
+Laravel's [`AsArrayObject::class`](https://laravel.com/docs/10.x/eloquent-mutators#array-object-and-collection-casting).
+Change your code to get the value
 with `$model->meta['key'] ?? 'default'` instead of `$model->meta->key`, and without the need of
 `is_object/is_array` type checking.
 

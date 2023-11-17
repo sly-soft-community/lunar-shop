@@ -19,8 +19,8 @@ use Lunar\Database\Factories\LanguageFactory;
  */
 class Language extends BaseModel
 {
-    use HasFactory;
     use HasDefaultRecord;
+    use HasFactory;
     use HasMacros;
 
     /**
@@ -41,10 +41,8 @@ class Language extends BaseModel
 
     /**
      * Return the URLs relationship
-     *
-     * @return HasMany
      */
-    public function urls()
+    public function urls(): HasMany
     {
         return $this->hasMany(Url::class);
     }

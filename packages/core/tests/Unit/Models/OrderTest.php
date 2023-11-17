@@ -6,6 +6,7 @@ use DateTime;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Lunar\Base\ValueObjects\Cart\ShippingBreakdown;
 use Lunar\Base\ValueObjects\Cart\ShippingBreakdownItem;
+use Lunar\Base\ValueObjects\Cart\TaxBreakdown;
 use Lunar\DataTypes\Price;
 use Lunar\Models\Cart;
 use Lunar\Models\Currency;
@@ -85,13 +86,10 @@ class OrderTest extends TestCase
             'meta' => [
                 'foo' => 'bar',
             ],
-            'tax_breakdown' => [
-                ['name' => 'VAT', 'percentage' => 20, 'total' => 200],
-            ],
         ]);
 
         $this->assertIsObject($order->meta);
-        $this->assertIsIterable($order->tax_breakdown);
+        $this->assertInstanceOf(TaxBreakdown::class, $order->tax_breakdown);
         $this->assertInstanceOf(DateTime::class, $order->placed_at);
     }
 
@@ -107,10 +105,7 @@ class OrderTest extends TestCase
             'placed_at' => now(),
             'meta' => [
                 'foo' => 'bar',
-            ],
-            'tax_breakdown' => [
-                ['description' => 'VAT', 'percentage' => 20, 'total' => 200],
-            ],
+            ]
         ]);
 
         $this->assertCount(0, $order->lines);
@@ -252,7 +247,7 @@ class OrderTest extends TestCase
                 new ShippingBreakdownItem(
                     name: 'Breakdown A',
                     identifier: 'BA',
-                    price: new Price(123, Currency::getDefault(), 1)
+                    price: $shippingPrice = new Price(123, $currency = Currency::getDefault(), 1)
                 ),
             ])
         );
@@ -265,15 +260,17 @@ class OrderTest extends TestCase
             'shipping_breakdown' => json_encode([[
                 'name' => 'Breakdown A',
                 'identifier' => 'BA',
-                'price' => 123,
+                'value' => 123,
+                'formatted' => $shippingPrice->formatted,
+                'currency' => $currency->toArray(),
             ]]),
         ]);
 
         $breakdown = $order->refresh()->shipping_breakdown;
 
-        $this->assertCount(1, $breakdown);
+        $this->assertCount(1, $breakdown->items);
 
-        $breakdownItem = $breakdown->first();
+        $breakdownItem = $breakdown->items->first();
 
         $this->assertEquals('Breakdown A', $breakdownItem->name);
         $this->assertEquals('BA', $breakdownItem->identifier);

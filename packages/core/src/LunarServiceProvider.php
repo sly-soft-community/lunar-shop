@@ -39,9 +39,10 @@ use Lunar\Console\Commands\AddonsDiscover;
 use Lunar\Console\Commands\Import\AddressData;
 use Lunar\Console\Commands\MigrateGetCandy;
 use Lunar\Console\Commands\Orders\SyncNewCustomerOrders;
-use Lunar\Console\Commands\ScoutIndexer;
+use Lunar\Console\Commands\ScoutIndexerCommand;
 use Lunar\Console\InstallLunar;
 use Lunar\Database\State\ConvertProductTypeAttributesToProducts;
+use Lunar\Database\State\ConvertTaxbreakdown;
 use Lunar\Database\State\EnsureBrandsAreUpgraded;
 use Lunar\Database\State\EnsureDefaultTaxClassExists;
 use Lunar\Database\State\EnsureMediaCollectionsAreRenamed;
@@ -200,7 +201,7 @@ class LunarServiceProvider extends ServiceProvider
                 InstallLunar::class,
                 AddonsDiscover::class,
                 AddressData::class,
-                ScoutIndexer::class,
+                ScoutIndexerCommand::class,
                 MigrateGetCandy::class,
                 SyncNewCustomerOrders::class,
             ]);
@@ -246,6 +247,7 @@ class LunarServiceProvider extends ServiceProvider
             EnsureMediaCollectionsAreRenamed::class,
             PopulateProductOptionLabelWithName::class,
             MigrateCartOrderRelationship::class,
+            ConvertTaxbreakdown::class,
         ];
 
         foreach ($states as $state) {

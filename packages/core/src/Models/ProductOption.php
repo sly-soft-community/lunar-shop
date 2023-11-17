@@ -5,6 +5,7 @@ namespace Lunar\Models;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lunar\Base\BaseModel;
 use Lunar\Base\Traits\HasMacros;
 use Lunar\Base\Traits\HasMedia;
@@ -25,27 +26,10 @@ use Spatie\MediaLibrary\HasMedia as SpatieHasMedia;
 class ProductOption extends BaseModel implements SpatieHasMedia
 {
     use HasFactory;
+    use HasMacros;
     use HasMedia;
     use HasTranslations;
     use Searchable;
-    use HasMacros;
-
-    /**
-     * Define our base filterable attributes.
-     *
-     * @var array
-     */
-    protected $filterable = [];
-
-    /**
-     * Define our base sortable attributes.
-     *
-     * @var array
-     */
-    protected $sortable = [
-        'name',
-        'label',
-    ];
 
     /**
      * Define which attributes should be cast.
@@ -58,16 +42,6 @@ class ProductOption extends BaseModel implements SpatieHasMedia
     ];
 
     /**
-     * Get the name of the index associated with the model.
-     *
-     * @return string
-     */
-    public function searchableAs()
-    {
-        return config('scout.prefix').'product_options';
-    }
-
-    /**
      * Return a new factory instance for the model.
      */
     protected static function newFactory(): ProductOptionFactory
@@ -75,12 +49,12 @@ class ProductOption extends BaseModel implements SpatieHasMedia
         return ProductOptionFactory::new();
     }
 
-    public function getNameAttribute($value)
+    public function getNameAttribute(string $value): mixed
     {
         return json_decode($value);
     }
 
-    protected function setNameAttribute($value)
+    protected function setNameAttribute(mixed $value): void
     {
         $this->attributes['name'] = json_encode($value);
     }
@@ -104,38 +78,10 @@ class ProductOption extends BaseModel implements SpatieHasMedia
     /**
      * Get the values.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany<ProductOptionValue>
+     * @return HasMany<ProductOptionValue>
      */
-    public function values()
+    public function values(): HasMany
     {
         return $this->hasMany(ProductOptionValue::class)->orderBy('position');
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSearchableAttributes()
-    {
-        $data['id'] = $this->id;
-
-        // Loop for add option name
-        foreach ($this->name as $locale => $name) {
-            $data['name_'.$locale] = $name;
-        }
-
-        // Loop for add option label
-        foreach ($this->name as $locale => $name) {
-            $data['label_'.$locale] = $name;
-        }
-
-        // Loop for add options
-        foreach ($this->values as $option) {
-            foreach ($option->name as $locale => $name) {
-                $key = 'option_'.$option->id.'_'.$locale;
-                $data[$key] = $name;
-            }
-        }
-
-        return $data;
     }
 }

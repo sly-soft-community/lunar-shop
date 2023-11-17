@@ -25,6 +25,7 @@ class BuyXGetYTest extends TestCase
 
     /**
      * @dataProvider provideRewardChecks
+     *
      * @test
      */
     public function can_determine_correct_reward_qty($linesQuantity, $minQty, $rewardQty, $maxRewardQty, $expected)
@@ -49,35 +50,35 @@ class BuyXGetYTest extends TestCase
                 'linesQuantity' => 1,
                 'minQty' => 1,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 1,
             ],
             [
                 'linesQuantity' => 2,
                 'minQty' => 1,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 2,
             ],
             [
                 'linesQuantity' => 2,
                 'minQty' => 2,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 1,
             ],
             [
                 'linesQuantity' => 10,
                 'minQty' => 10,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 1,
             ],
             [
                 'linesQuantity' => 10,
                 'minQty' => 1,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 10,
             ],
             [
@@ -98,28 +99,28 @@ class BuyXGetYTest extends TestCase
                 'linesQuantity' => 0,
                 'minQty' => 1,
                 'rewardQty' => 1,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 0,
             ],
             [
                 'linesQuantity' => 4,
                 'minQty' => 5,
                 'rewardQty' => 3,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 0,
             ],
             [
                 'linesQuantity' => 5,
                 'minQty' => 5,
                 'rewardQty' => 3,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 3,
             ],
             [
                 'linesQuantity' => 10,
                 'minQty' => 5,
                 'rewardQty' => 3,
-                'maxRewardQty' =>  null,
+                'maxRewardQty' => null,
                 'expected' => 6,
             ],
             [
@@ -470,11 +471,11 @@ class BuyXGetYTest extends TestCase
      *
      * Cart:
      * 2 x Product A = (10.00 x 2) - 10% = 18.00 excl tax
-     * 2 x Product B = ((5.00 x 2) - 5.00) - 10% = 4.50 excl tax
-     * Sub total: 22.50
-     * Discount total: 7.50
-     * Tax total: 4.50
-     * Total: 27.00
+     * 2 x Product B = ((5.00 x 2) - 5.00) = 5.00 excl tax
+     * Sub total: 23.00
+     * Discount total: 7.00
+     * Tax total: 4.60
+     * Total: 27.60
      */
     public function can_apply_multiple_different_discounts()
     {
@@ -557,7 +558,7 @@ class BuyXGetYTest extends TestCase
             'type' => AmountOff::class,
             'name' => 'Test amount off',
             'uses' => 0,
-            'priority' => 1,
+            'priority' => 2,
             'max_uses' => 1,
             'coupon' => 'AMOUNTOFFTEST',
             'data' => [
@@ -607,10 +608,10 @@ class BuyXGetYTest extends TestCase
         $this->assertEquals(200, $lineA->discountTotal->value);
 
         $this->assertEquals(1000, $lineB->subTotal->value);
-        $this->assertEquals(450, $lineB->subTotalDiscounted->value);
-        $this->assertEquals(550, $lineB->discountTotal->value);
+        $this->assertEquals(500, $lineB->subTotalDiscounted->value);
+        $this->assertEquals(500, $lineB->discountTotal->value);
 
-        $this->assertEquals(750, $cart->discountTotal->value);
+        $this->assertEquals(700, $cart->discountTotal->value);
         $this->assertCount(2, $cart->discountBreakdown);
     }
 

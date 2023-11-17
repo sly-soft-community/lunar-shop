@@ -14,11 +14,7 @@ class FillOrderFromCart
      */
     public function handle(Order $order, Closure $next)
     {
-        $cart = $order->cart;
-
-        if (! $cart->subTotal) {
-            $cart->calculate();
-        }
+        $cart = $order->cart->calculate();
 
         $order->fill([
             'user_id' => $cart->user_id,
@@ -32,14 +28,8 @@ class FillOrderFromCart
             'discount_total' => $cart->discountTotal?->value,
             'discount_breakdown' => [],
             'shipping_total' => $cart->shippingTotal?->value ?: 0,
-            'tax_breakdown' => $cart->taxBreakdown->map(function ($tax) {
-                return [
-                    'description' => $tax['description'],
-                    'identifier' => $tax['identifier'],
-                    'percentage' => $tax['amounts']->min('percentage'),
-                    'total' => $tax['total']->value,
-                ];
-            })->values(),
+            'shipping_breakdown' => $cart->shippingBreakdown,
+            'tax_breakdown' => $cart->taxBreakdown,
             'tax_total' => $cart->taxTotal->value,
             'currency_code' => $cart->currency->code,
             'exchange_rate' => $cart->currency->exchange_rate,

@@ -23,10 +23,10 @@ use Lunar\Database\Factories\CurrencyFactory;
  */
 class Currency extends BaseModel
 {
-    use HasFactory;
-    use LogsActivity;
     use HasDefaultRecord;
+    use HasFactory;
     use HasMacros;
+    use LogsActivity;
 
     /**
      * Define which attributes should be
@@ -46,10 +46,8 @@ class Currency extends BaseModel
 
     /**
      * Return the prices relationship
-     *
-     * @return HasMany
      */
-    public function prices()
+    public function prices(): HasMany
     {
         return $this->hasMany(Price::class);
     }
@@ -57,10 +55,8 @@ class Currency extends BaseModel
     /**
      * Returns the amount we need to multiply or divide the price
      * for the cents/pence.
-     *
-     * @return string
      */
-    public function getFactorAttribute()
+    public function getFactorAttribute(): string
     {
         /**
          * If we figure out how many decimal places we need, we can work

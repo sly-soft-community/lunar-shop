@@ -32,19 +32,19 @@ use Lunar\Models\ProductVariant;
 
 abstract class AbstractProduct extends Component
 {
-    use Notifies;
-    use WithFileUploads;
-    use HasImages;
+    use CanExtendValidation;
     use HasAvailability;
+    use HasDimensions;
+    use HasImages;
+    use HasPrices;
+    use HasSlots;
+    use HasTags;
+    use HasUrls;
+    use Notifies;
     use SearchesProducts;
     use WithAttributes;
+    use WithFileUploads;
     use WithLanguages;
-    use HasPrices;
-    use HasDimensions;
-    use HasUrls;
-    use HasTags;
-    use HasSlots;
-    use CanExtendValidation;
 
     /**
      * The current product we are editing.
@@ -476,7 +476,7 @@ abstract class AbstractProduct extends Component
                     return;
                 }
 
-                ProductAssociation::create([
+                ProductAssociation::firstOrCreate([
                     'product_target_id' => $assoc['inverse'] ? $this->product->id : $assoc['target_id'],
                     'product_parent_id' => $assoc['inverse'] ? $assoc['target_id'] : $this->product->id,
                     'type' => $assoc['type'],
@@ -502,6 +502,7 @@ abstract class AbstractProduct extends Component
             $this->variantsEnabled = $this->getVariantsCount() > 1;
 
             $this->syncAvailability();
+            $this->syncAssociations();
 
             $this->dispatchBrowserEvent('remove-images');
 

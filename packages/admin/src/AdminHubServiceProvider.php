@@ -74,6 +74,7 @@ use Lunar\Hub\Http\Livewire\Components\Products\Variants\Editing\Inventory;
 use Lunar\Hub\Http\Livewire\Components\Products\Variants\VariantShow;
 use Lunar\Hub\Http\Livewire\Components\Products\Variants\VariantSideMenu;
 use Lunar\Hub\Http\Livewire\Components\ProductSearch;
+use Lunar\Hub\Http\Livewire\Components\ProductVariantSearch;
 use Lunar\Hub\Http\Livewire\Components\Reporting\ApexChart;
 use Lunar\Hub\Http\Livewire\Components\Settings\ActivityLog\ActivityLogIndex;
 use Lunar\Hub\Http\Livewire\Components\Settings\Addons\AddonShow;
@@ -119,7 +120,6 @@ use Lunar\Hub\Http\Livewire\Components\Settings\Taxes\TaxZonesIndex;
 use Lunar\Hub\Http\Livewire\Components\Tables\Actions\UpdateStatus;
 use Lunar\Hub\Http\Livewire\Components\Tags;
 use Lunar\Hub\Http\Livewire\Dashboard;
-use Lunar\Hub\Http\Livewire\HubLicense;
 use Lunar\Hub\Http\Middleware\Authenticate;
 use Lunar\Hub\Http\Middleware\RedirectIfAuthenticated;
 use Lunar\Hub\Listeners\SetStaffAuthMiddlewareListener;
@@ -298,9 +298,9 @@ class AdminHubServiceProvider extends ServiceProvider
     protected function registerGlobalComponents()
     {
         Livewire::component('dashboard', Dashboard::class);
-        Livewire::component('hub-license', HubLicense::class);
         Livewire::component('hub.components.activity-log-feed', ActivityLogFeed::class);
         Livewire::component('hub.components.product-search', ProductSearch::class);
+        Livewire::component('hub.components.product-variant-search', ProductVariantSearch::class);
         Livewire::component('hub.components.collection-search', CollectionSearch::class);
         Livewire::component('hub.components.brand-search', BrandSearch::class);
         Livewire::component('hub.components.account', Account::class);
