@@ -179,7 +179,7 @@
                                             {{ $order->reference }}
                                         </a>
                                     </td>
-                                    <td class="pt-4 text-sm text-center">{{ $order->billingAddress->full_name }}</td>
+                                    <td class="pt-4 text-sm text-center">{{ $order->billingAddress?->full_name ?? $order->user->name  }}</td>
                                     <td class="pt-4 text-sm text-center">{{ $order->lines_count }}</td>
                                     <td class="pt-4 text-sm text-center">
                                         {{ optional($order->placed_at)->format('jS F Y h:ma') }}

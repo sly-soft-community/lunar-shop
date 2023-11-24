@@ -54,7 +54,6 @@
       "Lunar\\Hub\\": "packages/admin/src",
       "Lunar\\Hub\\Database\\Factories\\": "packages/admin/database/factories",
       "Lunar\\Hub\\Database\\State\\": "packages/admin/database/state",
-      "Lunar\\Licensing\\": "packages/licensing/src",
       "Lunar\\LivewireTables\\": "utils/livewire-tables/src/",
       "Lunar\\ScoutDatabaseEngine\\": "utils/scout-database-engine/src"
     }
@@ -62,7 +61,6 @@
   "autoload-dev": {
     "psr-4": {
       "Lunar\\Hub\\Tests\\": "packages/admin/tests",
-      "Lunar\\Licensing\\Tests\\": "packages/licensing/tests",
       "Lunar\\LivewireTables\\Tests\\": "utils/livewire-tables/tests/",
       "Lunar\\ScoutDatabaseEngine\\Tests\\": "utils/scout-database-engine/tests",
       "Lunar\\Tests\\": "packages/core/tests"
