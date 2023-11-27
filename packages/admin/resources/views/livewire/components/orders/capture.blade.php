@@ -8,9 +8,11 @@
       <x-hub::input.select wire:model="transaction">
         <option value>{{ __('adminhub::components.orders.capture.select_transaction') }}</option>
         @foreach($this->intents as $intent)
+        @if($intent->reference !== "main")
           <option value="{{ $intent->id }}">
             {{ $intent->amount->formatted }} - {{ $intent->driver }} // {{ $intent->reference }}
           </option>
+          @endif
         @endforeach
       </x-hub::input.select>
     </x-hub::input.group>
@@ -23,6 +25,8 @@
       />
     </x-hub::input.group>
 
+    {{-- @dd($this->transactionModel->amount->decimal > $amount) --}}
+    {{-- @dd($amount) --}}
     @if($this->transactionModel->amount->decimal > $amount)
       <x-hub::alert level="danger">
         You're about to capture an amount less than the total transaction value.

@@ -288,7 +288,7 @@ class OrderShow extends Component
         if (! $intents) {
             return false;
         }
-
+        
         return ! $captures;
     }
 
@@ -334,7 +334,9 @@ class OrderShow extends Component
     public function getIntentTotalProperty()
     {
         return $this->transactions->filter(function ($transaction) {
-            return $transaction->type == 'intent';
+            if($transaction->status !== 'error' && $transaction->reference == 'main'){ 
+                return $transaction->type == 'intent';
+            }
         })->sum('amount.value');
     }
 
